@@ -40,9 +40,10 @@ export default function TechDetail({ tech, onClose }: TechDetailProps) {
       exit={{ opacity: 0, y: -20 }}
       transition={{ duration: 0.4 }}
       whileHover={{ y: -8 }}
-      className="relative w-full max-w-3xl mx-auto rounded-[2rem] bg-gradient-to-br from-primary via-accent to-fuchsia-400 shadow-xl p-1 transition-all duration-300 ease-out hover:shadow-[0_50px_80px_-20px_rgba(0,0,0,0.4)] hover:from-amber-300 hover:via-orange-300 hover:to-fuchsia-500"
+      className="relative w-full max-w-3xl mx-auto rounded-[2rem] bg-white border border-white/20 shadow-xl p-1 transition-all duration-300 ease-out hover:shadow-[0_50px_80px_-20px_rgba(0,0,0,0.3)] group"
       >
-      <div className="relative rounded-[1.75rem] bg-[var(--color-background)] border border-white/10 px-8 py-8">
+      <div className={`absolute -inset-[4px] bg-linear-to-r ${colorClass} hexagon blur opacity-30 group-hover:opacity-60 transition duration-1000 rounded-[2rem]`} />
+      <div className="relative rounded-[1.75rem] bg-white/50 border border-white/10 px-8 py-8">
         <button
           onClick={onClose}
           className="absolute top-4 right-4 text-2xl opacity-60 hover:opacity-100 transition-opacity cursor-pointer z-20 p-2 bg-white/80 backdrop-blur-md rounded-full border border-slate-200"

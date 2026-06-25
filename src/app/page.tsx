@@ -12,7 +12,7 @@ export default function Home() {
 
   return (
     // Hero Section
-    <div className="flex flex-col flex-1 items-center justify-start font-sans text-center">
+    <div className="flex flex-col flex-1 items-center justify-start font-sans text-center bg-background">
       <main className="flex flex-col items-center pt-10 w-13/20">
         <h1 className="text-7xl mb-3 font-semibold bg-linear-to-r from-primary to-accent bg-clip-text text-transparent">
           Hello World!

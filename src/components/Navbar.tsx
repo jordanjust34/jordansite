@@ -1,5 +1,5 @@
 export default function Navbar() {
     return (
-        <nav>NAVBAR</nav>
+        <nav className="bg-background">NAVBAR</nav>
     );
 }
