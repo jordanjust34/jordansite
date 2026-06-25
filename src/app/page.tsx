@@ -2,9 +2,9 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { motion, AnimatePresence } from "framer-motion";
+import { AnimatePresence } from "framer-motion";
 import { technologies, type Technology } from "@/components/technologies";
-import TechDetail from "@/components/TechDetail";
+import TechDetail, { EmptyState } from "@/components/TechDetail";
 
 // ─── Sub-components ───────────────────────────────────────────────────────────
 
@@ -28,22 +28,6 @@ function HeroSection() {
       <p className="opacity-0">07/23/01: It was Joseph&apos;s funeral today. I went but I wasn&apos;t there. His mother wasn&apos;t there. Just like me...</p>
       <p className="opacity-0 text-primary">This is where you&apos;re meant to be. Please, don&apos;t leave me again...</p>
     </section>
-  );
-}
-
-function EmptyState() {
-  return (
-    <motion.div
-      key="empty"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      className="h-full flex items-center justify-center text-text bg-white/3 backdrop-blur-2xl rounded-3xl border border-white/10"
-    >
-      <p className="text-center max-w-md p-6">
-        Click on a technology to see its full details and showcase it in all glory! ✨
-      </p>
-    </motion.div>
   );
 }
 
@@ -87,6 +71,8 @@ interface TechSectionProps {
 }
 
 function TechSection({ activeTech, onSelect, onClose }: TechSectionProps) {
+  const techNames = technologies.map((t) => t.name);
+
   return (
     <section className="flex flex-col gap-4">
       <h2 className="font-bold text-3xl text-center bg-linear-to-r from-primary to-accent bg-clip-text text-transparent">
@@ -99,12 +85,12 @@ function TechSection({ activeTech, onSelect, onClose }: TechSectionProps) {
           <AnimatePresence mode="wait">
             {activeTech !== -1 ? (
               <TechDetail
-                key={activeTech}
+                key={technologies[activeTech].id}
                 tech={technologies[activeTech]}
                 onClose={onClose}
               />
             ) : (
-              <EmptyState />
+              <EmptyState key="empty" techNames={techNames} />
             )}
           </AnimatePresence>
         </div>

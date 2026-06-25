@@ -8,9 +8,9 @@ export interface Technology {
   name: string;
   icon: string;
   desc: string;
-  det: string[];
-  link: string;
-  colorClass?: string; // e.g. "from-blue-500 to-cyan-400"
+  link: string;        // external URL (e.g. official docs)
+  projectsLink: string; // internal path to your projects page (e.g. "/projects")
+  colorClass?: string; // optional Tailwind gradient override, e.g. "from-blue-500 to-cyan-400"
 }
 
 const DEFAULT_GRADIENT = "from-primary to-accent";
@@ -20,27 +20,17 @@ export const technologies: Technology[] = [
     id: "react",
     name: "React",
     icon: "/react.png",
-    desc: "Create responsive, interactive user interfaces using React ecosystem libraries",
-    det: [
-      "Custom Hook Architecture",
-      "Context API Patterns",
-      "Hook-Based State Management",
-      "Component Design Principles",
-    ],
+    desc: "Create responsive, interactive user interfaces using React ecosystem libraries.",
     link: "https://react.dev/",
+    projectsLink: "/projects",
   },
   {
     id: "nextjs",
     name: "Next.js",
     icon: "/nextjs.png",
-    desc: "Server-side rendering framework with optimized build performance and routing",
-    det: [
-      "RSC Architecture",
-      "File System Routing",
-      "Edge Functions",
-      "Metadata API Integration",
-    ],
+    desc: "Server-side rendering framework with optimized build performance and routing.",
     link: "https://nextjs.org/",
+    projectsLink: "/projects",
   },
 ];
 
