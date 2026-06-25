@@ -1,0 +1,57 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/node_modules/
+/.pnp
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/versions
+
+# Next.js build outputs
+/.next/
+/out/
+/.vercel/
+/build/
+
+# production
+/dist/
+
+# local environment files
+.env*
+!.env.example
+
+# editor and IDE
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+# system files
+.DS_Store
+Thumbs.db
+
+# debug logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# TypeScript
+*.tsbuildinfo
+next-env.d.ts
+
+# test output
+/coverage/
+
+# temporary files
+*.log
+*.tmp
+*.temp
+
+# md
+COLORS.md
