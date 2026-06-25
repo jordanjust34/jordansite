@@ -22,7 +22,7 @@ export const technologies: Technology[] = [
     icon: "/react.png",
     desc: "Create responsive, interactive user interfaces using React ecosystem libraries.",
     link: "https://react.dev/",
-    projectsLink: "/projects",
+    projectsLink: "/projects",  // link to projects for that tech
   },
   {
     id: "nextjs",

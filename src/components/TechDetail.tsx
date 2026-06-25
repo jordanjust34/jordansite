@@ -34,7 +34,7 @@ export function EmptyState({ techNames }: EmptyStateProps) {
 
       <div className="space-y-1">
         <p className="text-text font-medium">Pick something to inspect</p>
-        <p className="text-sm text-text/50 max-w-[220px] leading-relaxed">
+        <p className="text-sm text-text/50 max-w-55 leading-relaxed">
           Each bubble is a tech I&apos;ve shipped something with. Tap one.
         </p>
       </div>
@@ -133,7 +133,7 @@ export default function TechDetail({ tech, onClose }: TechDetailProps) {
       {/* Header — centered name + icon */}
       <div className="flex flex-col items-center text-center gap-3 pt-10 pb-6 px-8 border-b border-white/10">
         <div className="flex items-center gap-2.5">
-          <div className="relative w-8 h-8 flex-shrink-0">
+          <div className="relative w-8 h-8 shrink-0">
             <Image
               src={tech.icon}
               alt={tech.name}
