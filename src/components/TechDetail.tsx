@@ -118,55 +118,52 @@ export default function TechDetail({ tech, onClose }: TechDetailProps) {
       initial={{ opacity: 0, y: 16 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -16 }}
+      whileHover={{ y: -3 }}
       transition={{ duration: 0.3, ease: "easeOut" }}
-      className="
-        group relative w-full mx-auto
-        rounded-3xl bg-white/5 backdrop-blur-md
-        border border-white/10 overflow-hidden
-      "
+      className={`relative overflow-visible p-[2px] rounded-[1.5rem] bg-linear-to-br ${gradient} shadow-lg transition-shadow duration-300 hover:shadow-2xl`}
     >
-      {/* Subtle gradient glow along the top edge */}
-      <div className={`absolute inset-x-0 top-0 h-px bg-linear-to-r ${gradient} opacity-60`} />
+      {/* Inner card — sits on top of the gradient border layer */}
+      <div className="relative w-full rounded-[1.375rem] bg-background overflow-hidden border border-transparent">
+        <CloseButton onClick={onClose} />
 
-      <CloseButton onClick={onClose} />
-
-      {/* Header — centered name + icon */}
-      <div className="flex flex-col items-center text-center gap-3 pt-10 pb-6 px-8 border-b border-white/10">
-        <div className="flex items-center gap-2.5">
-          <div className="relative w-8 h-8 shrink-0">
-            <Image
-              src={tech.icon}
-              alt={tech.name}
-              fill
-              sizes="32px"
-              className="object-contain"
-            />
+        {/* Header — centered name + icon */}
+        <div className="flex flex-col items-center text-center gap-3 pt-10 pb-6 px-8 border-b border-white/10">
+          <div className="flex items-center gap-2.5">
+            <div className="relative w-8 h-8 flex-shrink-0">
+              <Image
+                src={tech.icon}
+                alt={tech.name}
+                fill
+                sizes="32px"
+                className="object-contain"
+              />
+            </div>
+            <h2 className={`text-2xl font-semibold bg-linear-to-r ${gradient} bg-clip-text text-transparent`}>
+              {tech.name}
+            </h2>
           </div>
-          <h2 className={`text-2xl font-semibold bg-linear-to-r ${gradient} bg-clip-text text-transparent`}>
-            {tech.name}
-          </h2>
+
+          <p className="text-sm text-text/60 leading-relaxed max-w-xs">
+            {tech.desc}
+          </p>
         </div>
 
-        <p className="text-sm text-text/60 leading-relaxed max-w-xs">
-          {tech.desc}
-        </p>
-      </div>
+        {/* Footer — two link buttons */}
+        <div className="flex flex-row gap-2 px-6 py-5">
+          <LinkButton href={tech.link} external>
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" className="opacity-50" aria-hidden="true">
+              <path d="M2 12L12 2M12 2H6M12 2V8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+            {hostname}
+          </LinkButton>
 
-      {/* Footer — two link buttons */}
-      <div className="flex flex-row gap-2 px-6 py-5">
-        <LinkButton href={tech.link} external>
-          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" className="opacity-50" aria-hidden="true">
-            <path d="M2 12L12 2M12 2H6M12 2V8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-          </svg>
-          {hostname}
-        </LinkButton>
-
-        <LinkButton href={tech.projectsLink}>
-          Projects
-          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" className="opacity-50" aria-hidden="true">
-            <path d="M2 7H12M12 7L8 3M12 7L8 11" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-          </svg>
-        </LinkButton>
+          <LinkButton href={tech.projectsLink}>
+            Projects
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" className="opacity-50" aria-hidden="true">
+              <path d="M2 7H12M12 7L8 3M12 7L8 11" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </LinkButton>
+        </div>
       </div>
     </motion.div>
   );
