@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { technologies, type Technology } from "@/components/technologies";
+import { technologies, type Technology, getTechGradient } from "@/components/technologies";
 import TechDetail from "@/components/TechDetail";
 
 // ─── Sub-components ───────────────────────────────────────────────────────────
@@ -54,28 +54,38 @@ interface TechBubbleProps {
 }
 
 function TechBubble({ tech, isActive, onClick }: TechBubbleProps) {
+  const [isHovered, setIsHovered] = useState(false);
+  const gradient = getTechGradient(tech.id);
+  const accentColor = tech.accentColor ?? "#3f2b81";
+  const showRing = isHovered || isActive;
+
   return (
     <button
       onClick={onClick}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
       aria-label={`View details for ${tech.name}`}
       aria-pressed={isActive}
       className={`
-        mt-2.5 mb-2.5 relative w-24 h-24 rounded-full overflow-hidden
-        flex items-center justify-center
+        mt-2.5 mb-2.5 relative w-24 h-24 rounded-full p-[3px]
+        flex items-center justify-center overflow-hidden
+        bg-linear-to-r ${gradient}
         transition-all duration-300
-        ${isActive
-          ? "ring-4 ring-primary shadow-lg scale-110"
-          : "ring-2 ring-gray-300 hover:ring-primary hover:shadow-md"
-        }
+        ${isActive ? "scale-110" : "hover:scale-105"}
       `}
+      style={{
+        boxShadow: showRing ? `0 0 0 2px ${accentColor}` : "none",
+      }}
     >
-      <Image
-        src={tech.icon}
-        alt={tech.name}
-        sizes="96px"
-        fill
-        className="object-contain p-2"
-      />
+      <div className="relative w-full h-full rounded-full overflow-hidden bg-white">
+        <Image
+          src={tech.icon}
+          alt={tech.name}
+          sizes="96px"
+          fill
+          className="object-contain p-2"
+        />
+      </div>
     </button>
   );
 }

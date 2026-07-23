@@ -11,6 +11,7 @@ export interface Technology {
   det: string[];
   link: string;
   colorClass?: string; // e.g. "from-blue-500 to-cyan-400"
+  accentColor?: string; // e.g. "#38bdf8"
 }
 
 const DEFAULT_GRADIENT = "from-primary to-accent";
@@ -28,6 +29,8 @@ export const technologies: Technology[] = [
       "Component Design Principles",
     ],
     link: "https://react.dev/",
+    colorClass: "from-sky-500 to-cyan-400",
+    accentColor: "#38bdf8",
   },
   {
     id: "nextjs",
@@ -41,6 +44,8 @@ export const technologies: Technology[] = [
       "Metadata API Integration",
     ],
     link: "https://nextjs.org/",
+    colorClass: "from-neutral-900 to-slate-500",
+    accentColor: "#111827",
   },
 ];
 

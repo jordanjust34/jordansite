@@ -40,27 +40,30 @@ function CompetencyTag({ label }: { label: string }) {
 
 export default function TechDetail({ tech, onClose }: TechDetailProps) {
   const gradient = getTechGradient(tech.id);
+  const accentColor = tech.accentColor ?? "#3f2b81";
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: -20 }}
-      transition={{ duration: 0.4 }}
-      whileHover={{ y: -8 }}
-      className={`
-        group relative w-full max-w-3xl mx-auto
-        rounded-[2rem] p-[3px]
-        bg-linear-to-r ${gradient}
-        transition-all duration-300 ease-out
-      `}
-      style={{
-        filter:
-          "drop-shadow(0 0 16px rgba(63, 43, 129, 0.34)) drop-shadow(0 0 30px rgba(252, 110, 172, 0.22))",
-      }}
-    >
-      {/* Card body */}
-      <div className="relative rounded-[calc(2rem-3px)] bg-white border border-slate-200 px-8 py-8">
+    <div className="group relative w-full max-w-3xl mx-auto">
+      <div
+        className="absolute inset-x-10 -bottom-5 h-10 blur-2xl rounded-full opacity-45"
+        style={{ backgroundColor: accentColor }}
+      />
+
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: -20 }}
+        transition={{ duration: 0.4 }}
+        whileHover={{ y: -8 }}
+        className={`
+          relative rounded-[2rem] p-[3px]
+          bg-linear-to-r ${gradient}
+          transition-all duration-300 ease-out
+        `}
+        style={{ boxShadow: `0 14px 28px -22px ${accentColor}` }}
+      >
+        {/* Card body */}
+        <div className="relative rounded-[calc(2rem-3px)] bg-white border border-slate-200 px-8 py-8">
         <CloseButton onClick={onClose} />
 
         <div className="flex flex-col items-center text-center gap-6">
@@ -117,5 +120,6 @@ export default function TechDetail({ tech, onClose }: TechDetailProps) {
         </div>
       </div>
     </motion.div>
+    </div>
   );
 }
