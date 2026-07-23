@@ -67,7 +67,7 @@ function TechBubble({ tech, isActive, onClick }: TechBubbleProps) {
       aria-label={`View details for ${tech.name}`}
       aria-pressed={isActive}
       className={`
-        mt-2.5 mb-2.5 relative w-24 h-24 rounded-full p-[3px]
+        mt-2.5 mb-2.5 relative w-24 h-24 rounded-full p-0.75
         flex items-center justify-center overflow-hidden
         bg-linear-to-r ${gradient}
         transition-all duration-300
