@@ -48,25 +48,19 @@ export default function TechDetail({ tech, onClose }: TechDetailProps) {
       exit={{ opacity: 0, y: -20 }}
       transition={{ duration: 0.4 }}
       whileHover={{ y: -8 }}
-      className="
+      className={`
         group relative w-full max-w-3xl mx-auto
-        rounded-4xl bg-white border border-white/20
-        shadow-xl p-1
+        rounded-[2rem] p-[3px]
+        bg-linear-to-r ${gradient}
         transition-all duration-300 ease-out
-        hover:shadow-[0_50px_80px_-20px_rgba(0,0,0,0.3)]
-      "
+      `}
+      style={{
+        filter:
+          "drop-shadow(0 0 16px rgba(63, 43, 129, 0.34)) drop-shadow(0 0 30px rgba(252, 110, 172, 0.22))",
+      }}
     >
-      {/* Glow layer */}
-      <div
-        className={`
-          absolute -inset-1 rounded-4xl blur
-          bg-linear-to-r ${gradient}
-          opacity-30 group-hover:opacity-60 transition duration-1000
-        `}
-      />
-
       {/* Card body */}
-      <div className="relative rounded-[1.75rem] bg-white/50 border border-white/10 px-8 py-8">
+      <div className="relative rounded-[calc(2rem-3px)] bg-white border border-slate-200 px-8 py-8">
         <CloseButton onClick={onClose} />
 
         <div className="flex flex-col items-center text-center gap-6">
